@@ -20,7 +20,7 @@
 
 
 
-        <title>My bids</title>
+        <title>Meus lances</title>
     </head>
     <body style="background-image:url(css/backproj.jpg)">
         <c:if test="${user != null}">
@@ -88,7 +88,7 @@
                                     </c:forEach> 
                                 </td>
 
-                                <c:if test="${bid.status=='pending'}">
+                                <c:if test="${bid.status=='pendente'}">
                             <form action="FrontController" method="POST">
 
                                 <input type="hidden" name="command" value="bid.delete" />

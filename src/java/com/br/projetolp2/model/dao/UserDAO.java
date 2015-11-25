@@ -18,11 +18,12 @@ public class UserDAO implements GenericDAO<User>{
     @Override
     public boolean insert(User user) {
          boolean resp = false;    
-        String sql = "INSERT INTO user_t(username,password) VALUES(?,?)";
+        String sql = "INSERT INTO user_t(username,password,permission) VALUES(?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
+            ps.setInt(3, user.getPermission());
             int resposta = ps.executeUpdate();
             if(resposta == 0){
                 System.out.println("Erro ao inserir o Usuário");
@@ -55,7 +56,9 @@ public class UserDAO implements GenericDAO<User>{
                 int id = rs.getInt("id_user");
                 String username = rs.getString("username");
                 String password = rs.getString("password");
+                int permission = rs.getInt("permission");
                 User u = new User(id, username, password);
+                u.setPermission(permission);
                 users.add(u);
             }
             
@@ -85,6 +88,7 @@ public class UserDAO implements GenericDAO<User>{
                 user.setUser_id(rs.getInt("id_user"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setPermission(rs.getInt("permission"));
             }
             
             //5. Fechar tudo
@@ -102,12 +106,13 @@ public class UserDAO implements GenericDAO<User>{
     @Override
     public boolean update(User user) {
         boolean resp = false;
-        String sql = "UPDATE user_t SET username=?,password=? WHERE id_user=?";
+        String sql = "UPDATE user_t SET username=?,password=?, permission=? WHERE id_user=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
-            ps.setInt(3, user.getUser_id());
+            ps.setInt(3, user.getPermission());
+            ps.setInt(4, user.getUser_id());
             int resposta = ps.executeUpdate();
             if(resposta == 0){
                 System.out.println("Erro ao atualizar o usuário");
@@ -164,6 +169,7 @@ public class UserDAO implements GenericDAO<User>{
                 user.setUser_id(rs.getInt("id_user"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setPermission(rs.getInt("permission"));
             }
             
             //5. Fechar tudo

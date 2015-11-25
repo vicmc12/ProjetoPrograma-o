@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" href="css/menu.css">
 
 
-        <title>New Post</title>
+        <title>Novo post</title>
     </head>
     <body style="background-image:url(css/backproj.jpg)">
         <c:if test="${user == null}">

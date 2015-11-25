@@ -11,16 +11,18 @@ public class User implements Serializable{
     private int user_id;
     private String username;
     private String password;
-    
+    private int permission;
+
+    public User() {
+        user_id=-1;
+        username="";
+    }
+
     public User(int user_id, String username, String password) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
-    }
-    public User() {
-        this.user_id = -1;
-        this.username = "anonimo";
-        this.password = "anonimo";
+        this.permission = 0;
     }
 
     public int getUser_id() {
@@ -47,13 +49,13 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "user_id=" + user_id + ", username=" + username + ", password=" + password + '}';
+    public int getPermission() {
+        return permission;
     }
 
-
-    
-
+    public void setPermission(int permission) {
+        this.permission = permission;
+    }
+   
     
 }

@@ -69,10 +69,12 @@
             </div>
         </form>
     </c:if>
-    <c:if test="${post.status=='finished'}">
-        <h1>This post is already finished</h1>
+    <c:if test="${post.status=='terminado'}">
+        <div class="container">
+        <h1>Este leitão ja terminou</h1>
+        </div>
     </c:if>
-    <c:if test="${post.status!='finished'}">
+    <c:if test="${post.status!='terminado'}">
 
 
         <c:if test="${user != null && post.user_id!=user.user_id}">

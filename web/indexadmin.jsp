@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 30/09/2015, 07:50:41
-    Author     : 31381243
+    Document   : indexadmin
+    Created on : Nov 25, 2015, 9:48:44 AM
+    Author     : Vicmc12
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index</title>
+        <title>Index Admin</title>
         <link rel="stylesheet" type="text/css" href="css/background.css">
         <link rel="stylesheet" type="text/css" href="css/mainStyle.css"/>
         <link rel="stylesheet" type="text/css" href="css/login.css">
@@ -66,10 +66,6 @@
 
 <c:if test="${user != null}">
 
-
-    <c:if test="${user.permission>0}">
-        <c:redirect url="indexadmin.jsp"></c:redirect>
-    </c:if>
     <div class="container">
         <h1>Bem-vindo ${user.username} </h1>
 
@@ -81,20 +77,24 @@
             <li><a href="FrontController?command=post.myposts">MEUS POSTS</a></li>
             <li><a href="FrontController?command=bid.bids">MEUS LANCES</a></li>
             <li><a href="FrontController?command=user.newpost">ADICIONAR POSTS</a></li>
-
+            
         </ul>
     </div>
-
-    <div class="container">
+        <div class="container">
         <ul id="nav">
 
             <li class="bars">
                 <div class="bar1"></div>
             </li>
             <li><a href="FrontController?command=user.logout">SAIR</a></li>
+            <c:if test="${user.permission==2}">
+            <li><a href="manageusers.jsp">ADMINISTRAR USUÁRIOS</a></li>
+            </c:if>
         </ul>
     </div>
-</c:if>
+
+        <c:if test="${user.permission>0}">
+    
 
 
 <div class="container">
@@ -107,6 +107,7 @@
             <th>Descrição</th>
             <th>Jogo(s)</th>
             <th>Leilão</th>
+            <th>Deletar</th>
         </tr>
     </thead>
 
@@ -127,12 +128,24 @@
                         </c:forEach>
                     </td>
                     <td><a href="FrontController?post=${post.id_post}&command=user.auction">Ver leilão</a></td>
+                     <form action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="post.delete" />
+                        <input type="hidden" name="postToDelete" value="${post.id_post}"/>
+                        <td><input type="submit" value="Deletar" id="submit"/></td>
+                    </form>
                 </tr>
 
             </c:if>
         </c:forEach>
     </tbody>
 </table>
+            </c:if>
+<c:if test="${user.permission<1}">
+    <div class="container">
+    <h1>Você não tem permissão suficiente para acessar essa pagina</h1>
+    </div>
+</c:if>
+</c:if>
 <p class="footer3"> © All rights reserved.  </p>
 </body>
 </html>

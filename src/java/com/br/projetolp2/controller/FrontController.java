@@ -47,7 +47,7 @@ public class FrontController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             String page = "index.jsp";
-            int code = 0;
+            int code = 1;
             String msg = "";
             RequestDispatcher rd;
             PostDAO postdao = new PostDAO();
@@ -57,7 +57,6 @@ public class FrontController extends HttpServlet {
             //todas as operações de user
             if(command.startsWith("post")){
                 if(command.endsWith("read")){
-                    System.out.println("aki5");
                    
                   
                    List<Post> posts = postdao.read();
@@ -105,9 +104,7 @@ public class FrontController extends HttpServlet {
                 
                 }else if(command.endsWith("bids")){
                     page = "mybids.jsp";
-                    System.out.println("OLA");
                 }else if(command.endsWith("delete")){
-                    System.out.println("Delete");
                     int bidID = Integer.parseInt(request.getParameter("bidToDelete"));
                     biddao.deleteBidById(bidID);
                     request.getSession().setAttribute("bids", biddao.read());
@@ -144,7 +141,6 @@ public class FrontController extends HttpServlet {
                             games.add(allGames.get(i));
                         }
                     }
-                    System.out.println("Tamanho lista de jogos"+games.size());
                     bid.setGames(games);
                     Post post = (Post)request.getSession().getAttribute("post");
                     bid.setId_post(post.getId_post());
@@ -157,7 +153,6 @@ public class FrontController extends HttpServlet {
                     List<Bid> bids = biddao.read();
                     Bid bid = new Bid();
                     int bidId = Integer.parseInt(request.getParameter("bidAccepted"));
-                    System.out.println("Id da bid :"+bidId );
                     for (int i = 0; i < bids.size(); i++) {
                         if(bids.get(i).getId_bid()==bidId){
                             bid = bids.get(i);
@@ -210,7 +205,6 @@ public class FrontController extends HttpServlet {
                        page = "auction.jsp";
                    }
                 } else if(command.endsWith("auction")){
-                    System.out.println("aki");
                     List<Post> posts = postdao.read();
                     for (Post post: posts) {
                         if(post.getId_post()==Integer.parseInt(request.getParameter("post"))){
@@ -218,9 +212,17 @@ public class FrontController extends HttpServlet {
                         }
                     }
                     
-                    code=10;
+                    page = "auction.jsp";
                 } else if(command.endsWith("newpost")){
                     page = "newpost.jsp";
+                } else if(command.endsWith("permission")){
+                    int userID = Integer.parseInt(request.getParameter("userPermission"));
+                    int permission = Integer.parseInt(request.getParameter("permission"));
+                    User user = userdao.readById(userID);
+                    user.setPermission(permission);
+                    userdao.update(user);
+                    page="manageusers.jsp";
+                    request.getSession().setAttribute("allUsers", userdao.read());
                 }
                 
                 
@@ -230,8 +232,6 @@ public class FrontController extends HttpServlet {
                     code = -6;
                 }else if(command.endsWith("games")){
                    List<Game> allGames = gamedao.read();
-                   
-                    System.out.println("Tamanho games "+allGames.size());
                    request.getSession().setAttribute("allGames", allGames);
                    page = "newpost.jsp";
                 }else if(command.endsWith("myposts")){
@@ -249,7 +249,6 @@ public class FrontController extends HttpServlet {
                     request.getSession().setAttribute("gamesID", gamesID);
                     page = "newpost.jsp";
                 }else if(command.endsWith("select")){
-                    System.out.println("aki");
                     int game = Integer.parseInt(request.getParameter("game"));
                     List<Integer> games = (List<Integer>)request.getSession().getAttribute("gamesID");
                     if(games.get(game)==1){
@@ -260,9 +259,6 @@ public class FrontController extends HttpServlet {
                     request.getSession().setAttribute("gamesID", games);
                     page = "newpost.jsp";
                 }
-            }
-            if(code==10){
-                page = "auction.jsp";
             }
                 
             if( code == 1){
@@ -278,9 +274,9 @@ public class FrontController extends HttpServlet {
                     Cookie cookie2 = new Cookie("pwd", pwd);
                     cookie2.setMaxAge(60*60*24*7);
                     response.addCookie(cookie2);
-                } else {
-                    rd = request.getRequestDispatcher("/error.jsp");
-                    
+            }
+            if(code!=1){
+                   page = "error.jsp";
                     switch(code){
                         case -1:
                             msg = "User not found!";
@@ -303,7 +299,6 @@ public class FrontController extends HttpServlet {
                     }
                 }
             request.getSession().setAttribute("code", msg);
-            System.out.println(page);
             response.sendRedirect(page);
         }
     }

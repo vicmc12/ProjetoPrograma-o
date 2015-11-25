@@ -57,7 +57,6 @@ public class PostDAO implements GenericDAO<Post>{
             ex.printStackTrace();
         }
         PreparedStatement statement2 = conn.prepareStatement(sql2);
-            System.out.println("GENERATED KEY "+post.getId_post());
           for (int i = 0; i < post.getGames().size(); i++) {
            statement2.setInt(1, post.getId_post());
            statement2.setInt(2, post.getGames().get(i).getId_game());   
@@ -78,11 +77,8 @@ public class PostDAO implements GenericDAO<Post>{
         //2. Criar o preparedStatement
         String sql = "SELECT * FROM post";
 
-                        System.out.println("aki4");
-
         
         try {
-            System.out.println("aki6");
             PreparedStatement ps = conn.prepareStatement(sql);
             PreparedStatement psGame;
             PreparedStatement psGames;
@@ -95,7 +91,6 @@ public class PostDAO implements GenericDAO<Post>{
             
             //4. Mostrar os resultados
             while(rs.next()){
-                System.out.println("aki7");
                 Post post = new Post();
                 post.setId_post(rs.getInt("id_post") );
                 String sqlGames = "SELECT game_list_post.id_game from game_list_post where game_list_post.id_post = "+(rs.getInt("id_post"));
@@ -107,13 +102,10 @@ public class PostDAO implements GenericDAO<Post>{
                 /**LOGICA PARA ADICIONAR LISTA DE JOGOS **/
                 List<Game> games = new ArrayList<>();
                 while(rsGames.next()){
-                    System.out.println("aki8");
                     String sqlGame = "SELECT * from game where game.id_game = "+(rsGames.getInt("id_game"));
-                    System.out.println((rsGames.getInt("id_game")));
                     psGame = conn.prepareStatement(sqlGame);
                     rsGame = psGame.executeQuery();
                     while(rsGame.next()){
-                        System.out.println("ola");
                     Game game = new Game();
                     game.setId_game(rsGame.getInt("id_game") );
                     game.setDescription(rsGame.getString("description") );
@@ -133,7 +125,6 @@ public class PostDAO implements GenericDAO<Post>{
                 
                 post.setDescription(rs.getString("description"));
                 post.setId_post(rs.getInt("id_post"));
-                System.out.println(games.size());
                 post.setGames(games);
                 post.setUser_id(rs.getInt("id_user"));
                 post.setStatus(rs.getString("status"));

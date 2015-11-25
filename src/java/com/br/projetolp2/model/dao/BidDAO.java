@@ -60,8 +60,6 @@ public class BidDAO implements GenericDAO<Bid> {
           for (int i = 0; i < bid.getGames().size(); i++) {
            statement2.setInt(1, bid.getId_bid());
            statement2.setInt(2, bid.getGames().get(i).getId_game());
-              System.out.println("Bid id:"+bid.getId_bid());
-              System.out.println("Id Game:"+bid.getGames().get(i).getId_game());
            int resposta2 = statement2.executeUpdate();
            }  
           
@@ -102,9 +100,7 @@ public class BidDAO implements GenericDAO<Bid> {
                 /**LOGICA PARA ADICIONAR LISTA DE JOGOS **/
                 List<Game> games = new ArrayList<>();
                 while(rsGames.next()){
-                    System.out.println("aki8");
                     String sqlGame = "SELECT * from game where game.id_game = "+(rsGames.getInt("id_game"));
-                    System.out.println((rsGames.getInt("id_game")));
                     psGame = conn.prepareStatement(sqlGame);
                     rsGame = psGame.executeQuery();
                     while(rsGame.next()){
@@ -145,83 +141,6 @@ public class BidDAO implements GenericDAO<Bid> {
         }
         return bids;
     }
-    
-//    
-//    @Override
-//    public boolean update(Post post) {
-//         boolean resp = false;    
-//        String sql = "UPDATE post set id_user=?, description=? WHERE id_post=?";
-//        String sql2 = "UPDATE game_list_post set id_game WHERE id_post=?";
-//        String sqlDeleteGames = "DELETE * from game_list_post where game_list_post.id_post = ?";
-//        
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setInt(1, post.getUser_id());
-//            ps.setString(2, post.getDescription());
-//            ps.setInt(3, post.getId_post());
-//          
-//            
-//            PreparedStatement psDelete = conn.prepareStatement(sqlDeleteGames);
-//            psDelete.setInt(1, post.getId_post());
-//            int resportaDelete = psDelete.executeUpdate();
-//            
-//            PreparedStatement ps2 = conn.prepareStatement(sql2);
-//            
-//            for (int i = 0; i < post.getGames().size(); i++) {
-//            ps.setInt(1, ps.getGeneratedKeys().getInt(1));
-//            ps.setInt(2, post.getGames().get(i).getId_game());   
-//            }
-//            int resposta = ps.executeUpdate();
-//            int resposta2 = ps2.executeUpdate();
-//            if(resposta == 0){
-//                System.out.println("Error: post not inserted");
-//            } else {
-//                System.out.println("Post inserted succefully");
-//                resp = true;
-//            }
-//            
-//            if(resposta2 == 0){
-//                  System.out.println("Error: games not inserted");  
-//                }
-//             else {
-//                System.out.println("games inserted succefully");
-//                resp = true;
-//            }
-//
-//            
-//            ps.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//        return resp;
-//    }
-//
-//    @Override
-//    public boolean delete(Post post) {
-//        boolean resp = false;
-//        String sql = "DELETE FROM post WHERE id_post=?";
-//        String sqlDeleteGames = "DELETE * from game_list_post where game_list_post.id_post = ?";
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setInt(1, post.getId_post());
-//            int resposta = ps.executeUpdate();
-//            PreparedStatement psDelete = conn.prepareStatement(sqlDeleteGames);
-//            psDelete.setInt(1, post.getId_post());
-//            int resportaDelete = psDelete.executeUpdate();
-//            if(resposta == 0){
-//                System.out.println("Error: post not removed");
-//            } else {
-//                System.out.println("Post removed successfully");
-//                resp = true;
-//            }
-//            
-//            ps.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//        return resp;
-//    }
-
     @Override
     public boolean update(Bid bid) {
         boolean resp = false;    
@@ -229,8 +148,6 @@ public class BidDAO implements GenericDAO<Bid> {
         
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            System.out.println("Id Bid"+ bid.getId_bid());
-            System.out.println("Status: "+bid.getStatus());
             ps.setString(1, bid.getStatus());
             ps.setInt(2, bid.getId_bid());
             ps.executeUpdate();
@@ -244,7 +161,6 @@ public class BidDAO implements GenericDAO<Bid> {
 
     public boolean deleteBidById(int bidID) {
         boolean resp = false;
-        System.out.println("ID BID: "+ bidID);
         String sql = "DELETE FROM bid WHERE id_bid=?";
         String sqlDeleteGames = "DELETE from game_list_bid where game_list_bid.id_bid = ?";
         try {

@@ -1,7 +1,7 @@
-Tue Nov 24 20:35:52 BRST 2015 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Wed Nov 25 12:51:42 BRST 2015 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Nov 24 20:35:52 BRST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0151-3ba3-8949-000039ad277b 
+Wed Nov 25 12:51:51 BRST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0151-3f20-f168-000039ad277b 
 on database directory C:\Users\Vicmc12\Dropbox\ProjetoProgramacao\db\ProjLp2 with class loader sun.misc.Launcher$AppClassLoader@e53b93 
 Loaded from file:/C:/Program%20Files%20(x86)/glassfish4/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -13,8 +13,8 @@ os.version=6.3
 derby.system.home=C:\Users\Vicmc12\Dropbox\ProjetoProgramacao\db
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Tue Nov 24 23:56:40 BRST 2015: Shutting down Derby engine
+Wed Nov 25 14:05:22 BRST 2015: Shutting down Derby engine
 ----------------------------------------------------------------
-Tue Nov 24 23:56:40 BRST 2015:
-Shutting down instance a816c00e-0151-3ba3-8949-000039ad277b on database directory C:\Users\Vicmc12\Dropbox\ProjetoProgramacao\db\ProjLp2 with class loader sun.misc.Launcher$AppClassLoader@e53b93 
+Wed Nov 25 14:05:22 BRST 2015:
+Shutting down instance a816c00e-0151-3f20-f168-000039ad277b on database directory C:\Users\Vicmc12\Dropbox\ProjetoProgramacao\db\ProjLp2 with class loader sun.misc.Launcher$AppClassLoader@e53b93 
 ----------------------------------------------------------------

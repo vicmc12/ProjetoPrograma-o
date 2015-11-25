@@ -21,7 +21,7 @@
 
 
 
-        <title>My posts</title>
+        <title>Meus posts</title>
     </head>
     <body style="background-image:url(css/backproj.jpg)">
 
@@ -103,7 +103,7 @@
                                             <img src="gamesImg\game${game.id_game}.jpg" alt="game${game.id_game}">
                                         </c:forEach>
                                     </td>
-                                    <c:if test="${post.status!='finished'}">
+                                    <c:if test="${post.status!='terminado'}">
                                 <form action="FrontController" method="POST">
 
                                     <input type="hidden" name="command" value="post.delete" />
@@ -113,10 +113,10 @@
                                 </form>
                                 <td><a href="FrontController?post=${post.id_post}&command=user.auction">Ver leilão</a></td>
                             </c:if> 
-                            <c:if test="${post.status=='finished'}">
+                            <c:if test="${post.status=='terminado'}">
                                 <p>Bid accepted</p> 
                                 <c:forEach items="${bids}" var="bid">
-                                    <c:if test="${bid.status=='accepted'}">
+                                    <c:if test="${bid.status=='aceito'}">
                                         <c:if test="${bid.id_post==post.id_post}">
                                             <p>User: ${bid.id_user}</p>
                                             <p>Games: 

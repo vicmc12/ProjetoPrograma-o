@@ -6,7 +6,7 @@ import javax.servlet.http.Cookie;
 
 /**
  *
- * @author 1147106
+ * @author 31381243
  */
 public class UserManager {
     private static User user = null;
@@ -22,8 +22,10 @@ public class UserManager {
         user = dao.readByName(username);
         if(user.getUser_id() == -1){
             System.out.println("Error: User not found");
+            user=null;
             auth = -1;
         } else if(!user.getPassword().equals(password)){
+            user=null;
             System.out.println("Error: Wrong passsword");
             auth = -2;
         } else {
@@ -58,7 +60,9 @@ public class UserManager {
     }
 
     public static User getUser() {
-        return user;
+
+            return user;
+        
     }
 
     public static void setUser(User user) {
