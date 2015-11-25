@@ -1,0 +1,147 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/11/2015, 20:21:09
+    Author     : brunopaulodevasconcelos
+*/
+
+.form {
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 10em;
+}
+.form label {
+  display: block;
+  text-align: left;
+  color: white;
+  font-size: .875em;
+}
+.form form .text-input {
+  overflow: hidden;
+  margin-bottom: .875em;
+}
+.form form input[type="text"],
+.form form input[type="password"] {
+  width: 100%;
+  padding: 1em 0 12px;
+  padding-left: 0;
+  background: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 400;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+.form form input[type="text"]:focus + .separator,
+.form form input[type="password"]:focus + .separator {
+  -webkit-transform: scaleX(1) translateY(-2px);
+      -ms-transform: scaleX(1) translateY(-2px);
+          transform: scaleX(1) translateY(-2px);
+  opacity: 1;
+}
+.form form input[type="submit"] {
+  color: white;
+  background: #3599FF;
+  padding: 1em 1.4em;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+}
+.form form input[type="buttom"] {
+  color: white;
+  background: #3599FF;
+  padding: 1em 1.4em;
+  width:90px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+}
+
+.separator {
+  height: 3px;
+  width: 100%;
+  background: #68B3FF;
+  display: block;
+  -webkit-transform: scaleX(0) translateY(-2px);
+      -ms-transform: scaleX(0) translateY(-2px);
+          transform: scaleX(0) translateY(-2px);
+  -webkit-transform-origin: 50%;
+      -ms-transform-origin: 50%;
+          transform-origin: 50%;
+  opacity: 0;
+  -webkit-transition: all 0.12s cubic-bezier(0, 0, 0.52, 1.11);
+          transition: all 0.12s cubic-bezier(0, 0, 0.52, 1.11);
+}
+
+/**
+* Form Reset - remove focus highlighting
+*/
+* :focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+
+body a {
+  color: blue;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.form-bottom {
+  margin-top: 1.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.form-submit {
+  margin-top: 1.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#submit {
+  
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.original-src{
+    font-size: 18px;
+    color: white;
+}

@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/11/2015, 19:38:52
+    Author     : brunopaulodevasconcelos
+*/
+
+
+input[type='text']{
+    
+    color: #333;
+    width: 180px;
+    height: 30px;
+    margin-left: 90px;
+    margin-top: -27px;
+    position: absolute;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+
+    transition: box-shadow 320ms;
+
+    box-shadow: 0px 0px 8px 10px rgba(0,0,0,0.1);
+    
+    border-radius: 3px;
+    font-size: 18px;
+    border: 0px;
+}
+
+input[type='text']:focus {
+
+    outline: 0px;
+    outline-offset: 0px;
+    box-shadow: 0px 0px 1px 5px rgba(0,0,0,0.12);
+}
+
+input:-moz-placeholder {
+    color: #cccccc;
+}
+
+input[type="submit"] {
+  
+  width: 110px;
+  border: 1px solid #28abf6;;
+  line-height: 35px;
+  border-radius: 5px;
+  height: 39px;
+  color: #28abf6;
+  font-size: 18px;
+  top: 30px;
+  left: 350px;
+  cursor: pointer;
+  background: transparent;
+}
+
+input[type="submit"]:hover {
+  background: #fff;
+  color: #28abf6;
+}
+
+input[type="button"] {
+  
+  width: 110px;
+  border: 1px solid #28abf6;
+  line-height: 35px;
+  border-radius: 5px;
+  height: 39px;
+  color: #28abf6;
+  font-size: 18px;
+  margin-top: 30px;
+  float: center;
+  cursor: pointer;
+  background: transparent;
+}
+
+input[type="button"]:hover {
+  background: #fff;
+  color: #28abf6;
+}
